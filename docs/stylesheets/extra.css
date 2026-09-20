@@ -1,0 +1,29 @@
+/* A slightly denser code font size, since most pages are command lines. */
+.md-typeset pre > code {
+  font-size: 0.72rem;
+}
+
+/* Cards on the landing page keep an even height in a row. */
+.md-typeset .grid.cards > ul > li {
+  display: flex;
+  flex-direction: column;
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  margin-block: 0.6rem;
+}
+
+/* Definition lists carry the manual pages; make the term stand out. */
+.md-typeset dl dt {
+  font-weight: 600;
+}
+
+.md-typeset dl dd {
+  margin-bottom: 0.8em;
+}
+
+/* The tables comparing the two implementations read better left aligned
+   and with room to breathe. */
+.md-typeset table:not([class]) th {
+  white-space: nowrap;
+}
