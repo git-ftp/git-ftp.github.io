@@ -1,0 +1,27 @@
+name: Build site
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+
+      - run: uv sync --frozen
+
+      - name: Sync the manuals from the tool repositories
+        run: uv run scripts/sync_upstream_docs.py
+
+      - name: Build
+        run: uv run mkdocs build --strict
